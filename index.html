@@ -1,30 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- 
+    This website was NOT made with Squarespace.
+    I made it from scratch.
+
+    Hire Bess as your organist.
+    
+    – Chip
+-->
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bess Website</title>
+    <title>Bess Morrell – Organist</title>
+    <meta charset="utf-8">
+    <meta name="og:title" content="Bess Morrell – Organist">
+    <meta name="og:site_name" content="Bess Morrell">
+    <meta name="og:url" content="https://bessmorrell.com">
+    <meta name="keywords"
+        content="organ, pipe organ, organist, raleigh, durham, chapel hill, nc, greensboro, winston-salem, live music, wedding music, corporate event, private event, affordable, cheap, good price, disc jockey, live music">
+    <meta name="description" content="Organist in central North Carolina">
+    <meta name="og:description" content="Organist">
+    <meta name="author" content="Bess Morrell">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="copyright" content="Bess Morrell">
+    <meta name="robots" content="index,follow">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="" type="image/png">
+    <link rel="apple-touch-icon" href="">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-53HB8HLF9D"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-53HB8HLF9D');
+    </script>
 </head>
+
 <body>
-    <div id="main">
-        <div class="heading">
-            <h1>
-                Bess Website
-            </h1>
+    <img id="slideshow" src="/assets/bg0.jpg" alt="Slideshow image">
+
+    <div id="container">
+        <div class="fullpage">
+            <header>
+                <div id="left">
+                    <!-- <a href="">Home</a> -->
+                </div>
+                <div id="center">
+                    <!-- <a href="">BESS MORRELL</a> -->
+                </div>
+                <div id="right">
+                    <!-- <a href="https://instagram.com"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg></a></svg></a> -->
+                    <a href="mailto:contact@bessmorrell.com?subject=Inquiry"><svg xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-mail">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg></a>
+                </div>
+            </header>
+            <main class="content">
+                <div class="title-container"> <!-- For removing flex behavior from these children -->
+                    <div class="title">Bess Morrell</div>
+                    <div class="subtitle">Organist in central North Carolina</div>
+                    <a href="mailto:contact@bessmorrell.com?subject=Inquiry"><button>Contact Me</button></a>
+                </div>
+            </main>
+            <footer>
+                <button data-scroll-to=".bg">&darr;</button>
+            </footer>
         </div>
-        <div class="p">
-            <p>
-                Welcome to Bess Website
-            </p>
+        <div class="bg">
+            <div class="columns">
+                <main>
+                    <div>
+                        <div>
+                            Bess Morrell is a pipe organ student at <a class="link" href="https://uncsa.edu/music/organ/index.aspx">University of North Carolina School of the Arts</a>.
+                            <br><br>
+                            She has studied under organists <a class="link" href="http://www.davidbaskeyfield.com">David Baskeyfield</a> and Justin Berg.
+                        </div>
+                        <div>
+                            <a href=""><button>Contact Me</button></a>
+                            <!-- &nbsp; or <a class="link" href="">learn the organ yourself</a>. -->
+                        </div>
+                    </div>
+                </main>
+                <!-- <section>If you want a smaller sidebar, include a section here!</section> -->
+            </div>
+            <footer>
+                <div>Bess Morrell &copy; 2025. All rights reserved.</div>
+                <div class="fade">Providing live wedding & church music in Raleigh, Greensboro, Winston-Salem, Durham, and more.</div>
+                <div class="footer-columns">
+                    <a href="https://www.agohq.org/"><img src="/assets/ago.png" style="width: 200px;"></a>
+                    <a href="https://uncsa.edu/music/organ/index.aspx"><img src="/assets/uncsa.png" style="width: 100px; border-radius: 5px;"></a>
+                </div>
+            </footer>
         </div>
 
-    </div>
-    <script>
-        // function ani() {
-        //     document.querySelector('#main').className = 'animating';
-        // }
-    </script>
+        <script>
+            // Slideshow
+
+            const images = Array.from({ length: 2 }, (_, i) => `/assets/bg${i}.jpg`);
+            const delay = 7000; // 5 seconds
+            const preloaded = [];
+
+            for (let i = 0; i < images.length; i++) {
+                preloaded[i] = new Image();
+                preloaded[i].src = images[i];
+            }
+
+            let current = 1;
+            const img = document.getElementById('slideshow');
+
+            setInterval(() => {
+                img.src = preloaded[current].src;
+                current = (current + 1) % images.length;
+            }, delay);
+        </script>
 </body>
+
 </html>

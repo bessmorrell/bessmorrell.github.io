@@ -1,45 +1,357 @@
-*{
-    margin: 0;
-    padding: 0;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-}
-body {
-    background: whitesmoke;
-    height: 100vh;
-    width: 100%;
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Instrument+Serif:ital@0;1&display=swap');
 
+* {
+    box-sizing: border-box;
+    /* Apparently this is a best practice! */
+}
+
+:root {
+    --color: #dd2525;
+
+    --font-text: "EB Garamond", "Garamond", "Arial";
+    --font-heading: "Instrument Serif", "EB Garamond", serif;
+}
+
+body {
+    margin: 0;
+    background: black;
+
+    font-family: var(--font-text);
+    font-size: 1.1em;
+}
+
+.fade {
+    font-size: 0.8em;
+    opacity: 0.6;
+}
+
+.word-wrapper {
+    display: inline-block;
+    height: 1em;
+    /* overflow: hidden; */
+    /* vertical-align: bottom; */
+    position: relative;
+}
+
+#rotating-word {
+    display: inline-block;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    will-change: transform, opacity;
+}
+
+#slideshow {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+
+    opacity: 50%;
+    filter: saturate(1.3);
+}
+
+img {
+    width: 100%;
+}
+
+#container {
+    color: white;
+    position: relative;
+}
+
+/* Content on top of the background image */
+.content { 
+    width: 100%;
+    padding: 3rem;
+}
+
+.fullpage {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    padding: 2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header #left {
+    font-size: 0.8em;
+    filter: brightness(0.6);
+}
+
+header #center {
+    font-weight: 600;
+    font-size: 1.5em;
+    transition: transform 0.2s;
+}
+
+header #right {
+    display: flex;
+    gap: 1em;
+}
+
+.footer-columns {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 3em;
 }
-#main{
-    position: relative;
+
+main {
+    flex-grow: 1;
+    max-width: 70rem;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+footer {
+    padding: 3em;
+    text-align: center;
+}
+
+footer div {
+    margin-bottom: 1em;
+}
+
+.title {
+    font-size: 4em;
+    margin-bottom: 1rem;
+
+    font-family: var(--font-heading);
+}
+
+.subtitle {
+    opacity: 0.75;
+    /* font-style: italic; */
+    font-size: 1.5em;
+    font-weight: 500;
+    margin-bottom: .5rem;
+
+    font-family: var(--font-heading);
+}
+
+main div:has(button) {
+    margin: 2em 0;
+}
+
+main button {
+    margin: 1em 0;
+}
+
+button {
+    padding: 0.5em 1em;
+    display: inline;
+
+    border: none;
+    background: white;
+
+    border-radius: 1em;
+
+    color: black;
+    cursor: pointer;
+
+
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 500;
+    transition: 0.2s all;
+}
+
+button:hover {
+    transform: scale(1.02);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    padding: 2px 0;
+}
+
+a:hover {
+    filter: brightness(0.9);
+}
+
+a:has(> button) {
+    margin: 2em 0;
+}
+
+.bg {
+    background: white;
+    color: black;
+    padding: 3rem 3rem 0 3rem;
+}
+
+/* On big screens, show reviews on the right side */
+@media screen and (min-width: 800px) {
+    .columns {
+        display: flex;
+        align-items: flex-start;
+        gap: 2rem;
+    }
+
+    .columns>main {
+        flex-grow: 1;
+    }
+
+    .columns>section {
+        flex-grow: 0;
+        width: 30rem;
+    }
+}
+
+
+.bg button {
+    background: black;
+    color: white;
+}
+
+.bg main {
+    line-height: 1.5;
+}
+
+.bg main div:not(.faq-section div) {
+    margin-bottom: 1em;
+}
+
+.bg a.link {
+    border-bottom: 2px solid black;
+    transition: all 0.2s;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.bg a.link:hover {
+    border-bottom-color: transparent;
+}
+
+.bg footer {
+    font-size: 0.8em;
+}
+
+/* FAQ */
+
+.faq-section {}
+
+.faq-section h2 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.faq-item {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
     overflow: hidden;
 }
 
-#main:active {
-    animation-name: a;
-    animation-duration: 1s;
-    animation-iteration-count: 1;
+.faq-item a.link {
+    border-bottom: 2px solid #555;
 }
 
-.heading {
-    font: Georgia;
-    padding: 20px;
-    background: transparent;
-    text-align: center;
+.faq-question {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.p {
+
+.faq-toggle {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.faq-answer {
     padding: 0;
-    text-align: center;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    color: #555;
+    font-size: 0.9em;
+    opacity: 0;
 }
 
-@keyframes a {
-    from {
-        rotate: 0deg;
+.faq-item.active .faq-answer {
+    padding: 2rem 0;
+    max-height: 500px;
+    opacity: 1;
+}
+
+.faq-item.active .faq-toggle {
+    transform: rotate(45deg);
+}
+
+/* Highlighting the contact button on-scroll */
+
+@keyframes highlight {
+    0% {
+        background-color: transparent;
     }
-    to {
-        rotate: 360deg;
+
+    50% {
+        background-color: rgba(255, 213, 0, 0.3);
     }
+
+    100% {
+        background-color: transparent;
+    }
+}
+
+#contact {
+    transition: background-color 0.5s ease;
+}
+
+.highlight {
+    animation: highlight 1.5s ease;
+}
+
+/* Reviews */
+
+.review-section {
+    max-width: 50rem;
+    line-height: 1.4;
+
+    /* Horizontally center everything inside */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* All text (headings) in review section */
+.review-section h3, .review-section h5 {
+    font-weight: 500;
+}
+
+/* Control spacing between "See more reviews" and stars */
+.review-section h5 { 
+    margin-bottom: 0.75em;
+}
+.review {
+    background: #f8f8f8;
+    color: #333;
+    padding: 2em;
+    border-radius: 1em;
+
+    font-size: 0.8em;
+
+    margin-bottom: 2em;
+}
+
+.review-text {
+    margin-bottom: 1em;
+}
+
+.review-author {
+    color: #666;
+    font-style: italic;
+}
+
+.stars {
+    cursor: pointer;
 }
